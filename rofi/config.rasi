@@ -1,0 +1,86 @@
+configuration {
+modes :"window,drun,ssh,run,calc";
+font : "JetBrainsMono Nerd Font Medium 12";
+show-icons : true;
+display-drun : "Applications:";
+drun-display-format :"{icon} {name}";
+markup:true;
+
+  timeout {
+      action: "kb-cancel";
+      delay:  0; 
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+
+}
+
+@theme "/dev/null"
+
+*{
+bg : rgba(4, 26, 64, 0.1);
+bg-alt : #041A40;
+
+fg: #FFFAFA;
+fg-alt: #C49C40;
+
+background-color : @bg;
+border :0;
+margin : 0;
+spacing :0;
+padding:0; 
+}
+element{
+  padding: 8;
+  background-color:transparent;
+  border-radius:10px;
+}
+element-text{
+  background-color:inherit;
+  text-color:@fg;
+  highlight : None;
+  vertical-align:0.5;
+}
+element-text.selected.normal{
+  background-color: @bg-alt;
+  text-color:#B4D9EF;
+  font-weight:900;
+}
+element-icon.selected.normal{
+  background-color: @bg-alt;
+}
+
+mainbox{
+  background-color :@bg;
+  children : [inputbar,listview];
+  border-radius : 25px;
+}
+element-icon {
+  size: 30;
+  padding :8;
+}
+inputbar{
+  children:["prompt","entry"];
+}
+entry{
+  background-color : #B4D9EF;
+  padding:12;
+  text-color: @fg;
+}
+prompt{
+  enabled:true;
+  padding: 12 0 0 12;
+  text-color : @fg;
+  background-color:#B4D9EF;
+}
+window{
+  width:35%;
+    background-image :url('cheval2.jpeg');
+  border-radius:25px;
+}
+listview{
+  lines: 5;
+  padding :8;
+}

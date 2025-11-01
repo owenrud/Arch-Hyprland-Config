@@ -1,0 +1,238 @@
+{
+    "height":35,
+    "margin-top": 4,
+    "margin-left" :32,
+    "margin-right" : 32,
+    "layer": "top",
+    "modules-left": ["custom/exit","group/misc","hyprland/workspaces","wlr/taskbar"],
+    "modules-center": ["clock","power-profiles-daemon"],
+    "modules-right": ["tray","mpris","custom/updates","group/hardware","group/utility"],
+    "tray": {
+    "icon-size": 21,
+    "spacing": 10,
+    "icons": {
+        "blueman": "bluetooth",
+        "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png",
+        "spotify": "Spotify"
+    }
+},
+ 
+    "battery": {
+        "format": "{icon}",
+        "tooltip-format" : "{capacity}% {time} {timeTo}",
+        "format-icons": ["", "", "", "", ""],
+        "max-length":25,
+    },
+    "power-profiles-daemon": {
+  "format": "{icon}   {profile}",
+  "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+  "tooltip": true,
+  "format-icons": {
+    "default": "",
+    "performance": "",
+    "balanced": "",
+    "power-saver": ""
+  }
+},
+    "clock": {
+        "format": "{:%A, %B %d, %Y (%R)}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "timezones" :["Singapore",
+                    "Asia/Tokyo",    
+                    ], 
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#C49C40'><b>{}</b></span>",
+                              "days":       "<span color='#B4D9EF'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#041A40'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-scroll-up": "tz_up",
+                    "on-scroll-down": "tz_down",
+                    }
+    },
+   
+    "pulseaudio": {
+    "format": " {icon} {volume}%",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+        "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+        "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "phone-muted": "",
+        "portable": "",
+        "car": "",
+        "default": ["", ""]
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "ignored-sinks": ["Easy Effects Sink"]
+},
+  
+"mpris": {
+	"format": "Playing: {player_icon} {dynamic}",
+	"format-paused": "Paused : {status_icon} <i>{dynamic}</i>",
+    "max-length":30,
+    "dynamic-order":["title","artist"],
+    "[format]-len": 3,
+	"player-icons": {
+		"default": "▶",
+		"mpv": "🎵"
+	},
+	"status-icons": {
+		"paused": "⏸"
+	},
+    "tooltip" : false
+	// "ignored-players": ["firefox"]
+},
+"group/utility" :{
+    "orientation" :"horizontal",
+    "modules" :[
+        "network",
+        "pulseaudio",
+        "battery"
+    ],
+
+},
+"group/misc":{
+    "orientation" :"horizontal",
+    "modules" : [
+        "custom/clipboard",
+        "custom/notification",
+        "custom/cheatsheet"
+    ],
+},
+"network": {
+    "interface": "enp0s3",
+    "format": "{ifname}",
+    "format-wifi": " {essid} ({signalStrength}%)" ,
+    "format-ethernet": "󰊗 connected",
+    "format-disconnected": "No Internet", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname}  ,Click to Open Network Manager",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click":"nm-connection-editor",
+    "max-length": 20
+},
+
+"wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 22,
+    "icon-theme": "Numix-Circle",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": [
+       "tty-clock-float", "kitty","cava"
+    ],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "rewrite": {
+        "Firefox Web Browser": "Firefox",
+        "Foot Server": "Terminal"
+    }
+},
+"custom/updates": {
+    "format": "{} {icon}",
+    "return-type": "json",
+    "format-icons": {
+        "has-updates": "󱍷",
+        "updated": ""
+    },
+    "exec-if": "which waybar-module-pacman-updates",
+    "exec": "waybar-module-pacman-updates --no-zero-output"
+},
+"memory": {
+    "interval": 30,
+    "format": "M {percentage}%"
+},
+"custom/exit":{
+    "format" : "",
+    "on-click":"wlogout",
+    "icon-size" : 36,
+    "tooltip" :false
+},
+"custom/cheatsheet":{
+    "format": "",
+    "on-click":"~/.config/rofi/keybind_cheatsheet.sh",
+    "tooltip":false
+},
+"custom/clipboard": {
+    "format": "", 
+    "tooltip": false,
+    "on-click": "cliphist list | rofi -dmenu | cliphist decode | wl-copy", // Action on click
+  },
+   "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup>󱅫</sup></span>",
+      "none": "󰂚",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+
+"cpu": {
+    "interval": 10,
+    "format": " {usage}% / ",
+    "max-length": 10
+},
+"group/hardware":{
+    "orientation" :"horizontal",
+    "modules":[
+        "cpu",
+        "memory",
+    ]
+},
+"keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+        "locked": "",
+        "unlocked": ""
+    }
+},
+"bluetooth": {
+	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+	"format": "",
+	"format-disabled": "", // an empty format will hide the module
+	"format-connected": " {num_connections} connected",
+	"tooltip-format": "{controller_alias}\t{controller_address}",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+},
+"hyprland/workspaces": {
+	"format": "{name}",
+       "persistent-workspaces": {
+             "*": 5, // 5 workspaces by default on every monitor
+             "HDMI-A-1": 3 // but only three on HDMI-A-1
+       }
+},
+
+}

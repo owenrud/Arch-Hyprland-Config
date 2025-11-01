@@ -1,0 +1,19 @@
+/* ~/.config/rofi/keybinds.rasi */
+
+/* First, import your global theme to inherit its properties */
+@import "config.rasi"
+
+/* Now, override the listview to have a different layout */
+configuration {
+    show-icons:false;
+}
+listview {
+    columns: 2;
+    layout: vertical;
+    fixed-height: false;
+}
+
+window {
+    /* Optionally, set a different window size for this specific menu */
+    width: 60%;
+}
