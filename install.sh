@@ -24,4 +24,5 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 yay -S tty-clock --noconfirm
+yay -S nerd-fonts
 echo "Required Packages Installation Complete"
