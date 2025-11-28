@@ -8,4 +8,5 @@ These are what i'm using on my hyprland:
 4. Notifcation Center : Swaync
 
 ## Personal Notes
-1. do "chmod +x install.sh" for install script to be executable, and run "./install.sh" to execute the script
+1. doesn't need to clone the Project, just download the script "install.sh"
+2. do "chmod +x install.sh" for install script to be executable, and run "./install.sh" to execute the script
