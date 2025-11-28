@@ -18,11 +18,11 @@ for folder in "${folders[@]}"; do
 	cp -r "$folder" "$HOME/.config/"
 done
 cd 
-sudo pacman -S --needed base-devel git
+sudo pacman -S --needed base-devel git --noconfirm
 cd Downloads
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 yay -S tty-clock --noconfirm
-yay -S nerd-fonts
-echo "Required Packages Installation Complete"
+echo "42" | yay -S nerd-fonts --noconfirm
+echo "Required Packages Installation Complete, Reboot to apply changes"
