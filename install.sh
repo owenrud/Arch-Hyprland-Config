@@ -26,6 +26,7 @@ makepkg -si --noconfirm
 yay -S tty-clock --noconfirm
 yay -S spotify --noconfirm
 yay -S sddm-theme-sugar-candy --noconfirm
+yay -S wlogout --noconfirm
 yay -S nerd-fonts
 sleep 5 && sudo reboot
 echo "Required Packages Installation Complete, Rebooting in 5 seconds to apply changes...."
