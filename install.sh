@@ -24,5 +24,8 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 yay -S tty-clock --noconfirm
-echo "42" | yay -S nerd-fonts --noconfirm
-echo "Required Packages Installation Complete, Reboot to apply changes"
+yay -S spotify --noconfirm
+yay -S sddm-theme-sugar-candy --noconfirm
+yay -S nerd-fonts
+sleep 5 && sudo reboot
+echo "Required Packages Installation Complete, Rebooting in 5 seconds to apply changes...."
