@@ -23,10 +23,17 @@ cd Downloads
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
-yay -S tty-clock --noconfirm
-yay -S spotify --noconfirm
-yay -S sddm-theme-sugar-candy --noconfirm
-yay -S wlogout --noconfirm
-yay -S nerd-fonts
+yaypackages=(
+	"tty-clock"
+	"spotify"
+	"sddm-theme-sugar-candy"
+	"wlogout"
+	"noto-fonts-cjk"
+	"ttf-jetbrains-mono-nerd"
+	"gazelle-tui"
+)
+for package in "${yaypackages[@]}"; do
+	yay -S "$package" --noconfirm
+done
 sleep 5 && sudo reboot
 echo "Required Packages Installation Complete, Rebooting in 5 seconds to apply changes...."
