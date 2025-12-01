@@ -9,6 +9,7 @@ packages=(
 	"hyprshot"
 	"cliphist"
 	"blueman"
+	"power-profiles-daemon"
 )
 folders=("cava" "hypr" "kitty" "rofi" "swaync" "waybar" "eww")
 for package in "${packages[@]}"; do
