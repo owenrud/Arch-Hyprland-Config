@@ -8,6 +8,7 @@ packages=(
 	"swaync"
 	"hyprshot"
 	"cliphist"
+	"blueman"
 )
 folders=("cava" "hypr" "kitty" "rofi" "swaync" "waybar" "eww")
 for package in "${packages[@]}"; do
