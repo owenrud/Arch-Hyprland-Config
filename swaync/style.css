@@ -1,59 +1,179 @@
-:root {
-  --border-radius: 22px;
-  --cc-bg: rgba(180,217,239,0.7);
-
-  --widget-background: rgba(4, 26, 64, 1);
-  --noti-bg-alpha: 0.6;
-
-  --padding: calc(var(--border-radius) / 2);
+@define-color background #041A40;
+@define-color foreground #B4D9EF;
+@define-color gray	#45475a;
+*{
+outline : none;
+font-size : 18px;
+text-shadow : none;
+background-color : transparent;
 }
 
 .control-center {
-  border-radius: 15;
+	background-color:alpha(@background, 0.8);
+  border-radius: 15px;
+box-shadow 0 0 10px 0 rgba(0, 0, 0, 0.8);
+padding:5px;
+}
+.control-center,.notification-row .notification-background{
+border-radius:15px;
+margin-top:5px;
+}
+.notification{
+background-color:alpha(@background,0.8);
+}
+.notification > *:last-child > *{
+margin:5px;
 }
 
-.widgets > .widget,
-.widget-mpris > carouselindicatordots,
-.widget-mpris > box > button {
-  background: var(--widget-background);
-  color : #b4d9ef;
-  border-radius: var(--border-radius);
-  padding: calc(var(--border-radius) / 2);
-  border: var(--border);
+.summary { font-size: 1.1rem; }
+.time { font-size: 0.8rem; }
+.body { font-size : 1rem; }
+
+.notification-content{
+padding : 15px 10px 10px 20px;
+}
+.notification-action > button{
+padding:unset;
+margin:unset;
+}
+.notification-action > label{
+font-size: 1rem;
+font-weight: normal;
+}
+trough highlight{ background : @foreground}
+scale trough{
+margin: 0rem 1rem;
+background-color:@gray;
+min-height: 8px;
+min-width: 70px;
+}
+slider{ background-color: @foreground }
+tooltip { background-color : @gray }
+
+/** Widgets **/
+
+/*Mpris widget */
+
+@define-color mpris-album-art-overlay rgba(0,0,0, 0.55);
+@define-color mpris-button-hover rgba(0,0,0, 0.5);
+
+.widget-mpris .widget-mpris-player{
+padding:16px;
+margin:16px 20px;
+background-color: @mpris-album-art-overlay;
+border-radius:12px;
+box-shadow: 0px 0px 10px rgba(0,0,0, 0.65);
 }
 
-.control-center-list-placeholder {
-  padding: var(--border-radius);
+.widget-mpris .widget-mpris-player .widget-mpris-album-art{
+border-radius:12px;
+box-shadow: 0px 0px 10px rgba(0,0,0, 0.65);
+}
+.widget-mpris .widget-mpris-player .widget-mpris-title{
+font-weight:bold;
+font-size: 1.2rem;
+margin : 0px 8px 0px 8px;
+}
+.widget-mpris .widget-mpris-player .widget-mpris-subtitle{
+font-size:1rem;
+}
+.widget-mpris .widget-mpris-player > box > button:hover{
+background-color : @mpris-button-hover;
+}
+.widget-mpris > box > button:hover{
+background : alpha(@foreground, 0.8);
 }
 
-.notification-group {
-  border-radius: var(--border-radius);
-  padding: 8px;
+/* Volume widget */
+.widget-volume {
+	padding:6px 5px 5px 5px;
+	margin: unset;
+	font-size: 1.3rem;
+}
+.widget-volume > box > button {
+border:none
 }
 
-.widget.widget-mpris {
-  background: transparent;
-  border-radius: 0;
-  padding: 0;
-  border: none;
+/*Menubar widget*/
+.widget-menubar{
+background :transparent;
+
+margin : unset;
+padding-bottom : 6px;
+font-size :16px;
 }
-.widget.widget-mpris > carouselindicatordots {
-  --dots-padding: 4px;
-  padding: var(--dots-padding);
-  padding-left: var(--dots-padding);
-  padding-right: calc(6px + var(--dots-padding));
-  margin: 0;
-  margin-top: var(--padding);
+.widget-menubar > box {
+color : #b4d9ef;
+margin:unset;
+min-heigth:15px;
+min-width:40px;
+padding :unset;
 }
-.widget-mpris > box > button:hover {
-  background: rgba(180, 217, 239, 1);
-  color : var(--widget-background);
+.widget-menubar > box >.menu-bar-button{
+background:transparent;
 }
-.widget-mpris-player {
-  box-shadow: none;
-  border: var(--border);
-  margin: 0 var(--padding);
+.power{
+color: @background;
+border-radius:10px;
+background-color : @foreground;
 }
-.widget-mpris-player:only-child {
-  margin: 0;
+.profiles{
+color: @background;
+background-color : @foreground;
+border-radius:10px;
+}
+.screenshot{ 
+color: @background;
+background-color : @foreground;
+border-radius:10px;
+}
+
+/* Buttons widget*/
+.widget-buttons-grid{
+font-size : 1rem;
+padding: 20px 20px 10px;
+margin: unset;
+}
+.widget-buttons-grid > flowbox >flowboxchild >button{
+background-color : #b4d9ef;
+box-shadow : 0px 0px 10px alpha(@background, 0.8);
+color : #041A40;
+min-width:40px;
+min-height:35px;
+margin :0 3px 0;
+border-radius : 12px;
+transition: all .5s ease;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button:hover{
+background-color : #041A40;
+color: #b4d9ef;
+}
+
+/* dnd widget */
+
+.widget-dnd {
+font-weight : bold;
+margin:unset;
+
+background:@gray;
+padding: 20px 15px 15px 15px;
+}
+.widget-dnd > switch{
+font-size: initial;
+border-radius:100px;
+background;#fffff;
+color;#041A40;
+border:none;
+box-shadow:none;
+padding: 3px;
+}
+.widget-dnd > switch:checked{
+background:@foreground;
+color:@background;
+}
+.wiget-dnd > switch slider{
+background: @foreground;
+border-radius:12px;
+min-width: 18px;
+min-height: 18px;
 }
