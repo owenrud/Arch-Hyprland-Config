@@ -20,13 +20,13 @@ markup:true;
 @theme "/dev/null"
 
 *{
-bg : rgba(4, 26, 64, 0.1);
-bg-alt : #041A40;
+bg-alt : rgba(4, 26, 64, 0.1);
+bg : #041A40;
 
-fg: #FFFAFA;
-fg-alt: #C49C40;
+fg: #B4D9EF;
+fg-alt: #FFFAFA;
 
-background-color : @bg;
+background-color:transparent;
 border :0;
 margin : 0;
 spacing :0;
@@ -39,48 +39,66 @@ element{
 }
 element-text{
   background-color:inherit;
-  text-color:@fg;
+  text-color:@fg-alt;
   highlight : None;
   vertical-align:0.5;
 }
 element-text.selected.normal{
   background-color: @bg-alt;
-  text-color:#B4D9EF;
+  text-color:@fg;
   font-weight:900;
 }
 element-icon.selected.normal{
   background-color: @bg-alt;
 }
-
-mainbox{
-  background-color :@bg;
-  children : [inputbar,listview];
-  border-radius : 25px;
+imagebox{
+background-image :url("~/.config/rofi/cheval2.jpeg",height);
+children :[inputbar];
+}
+mainbox{ 
+  children : ["imagebox","listview"];
+  orientation:horizontal;
 }
 element-icon {
   size: 30;
   padding :8;
 }
 inputbar{
-  children:["prompt","entry"];
+  children:["textbox-prompt-colon","entry"];
+  border-radius:10px;
+  margin:10px;
 }
 entry{
-  background-color : #B4D9EF;
+  background-color : @bg;
+  placeholder:"Search";
+  placeholder-color:@fg-alt;
   padding:12;
   text-color: @fg;
 }
-prompt{
+textbox-prompt-colon{
   enabled:true;
+  expand:false;
+  str:" ";
   padding: 12 0 0 12;
   text-color : @fg;
-  background-color:#B4D9EF;
+  background-color:@bg;
 }
 window{
-  width:35%;
-    background-image :url('cheval2.jpeg');
-  border-radius:25px;
+  width:45%; 
+  border-radius:15px;
+  border:2px solid;
+  border-color: @fg;
 }
 listview{
-  lines: 5;
-  padding :8;
+  cursor:"default";
+  background-color:@bg;
+  dynamic:true;
+  fixed-height:true;
+  fixed-columns:true;
+  spacing:10px;
+  enabled:true;
+  cycle:true;
+  scrollbar:false;
+  lines: 8;
+  columns:1;
 }
