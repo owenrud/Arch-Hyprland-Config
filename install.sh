@@ -10,6 +10,7 @@ packages=(
 	"cliphist"
 	"blueman"
 	"power-profiles-daemon"
+	"rofi-calc"
 )
 folders=("cava" "hypr" "kitty" "rofi" "swaync" "waybar" "eww")
 for package in "${packages[@]}"; do
