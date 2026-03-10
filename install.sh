@@ -28,6 +28,7 @@ sudo pacman -S --needed base-devel git --noconfirm
 cd Downloads
 git clone https://aur.archlinux.org/spotify.git
 cd Spotify
+curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | gpg --import -
 makepkg -si --noconfirm
 git clone https://aur.archlinux.org/yay.git
 cd yay
