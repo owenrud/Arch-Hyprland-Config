@@ -25,10 +25,10 @@ for folder in "${folders[@]}"; do
 done
 cd 
 sudo pacman -S --needed base-devel git --noconfirm
+cd Downloads
 git clone https://aur.archlinux.org/spotify.git
 cd Spotify
 makepkg -si --noconfirm
-cd Downloads
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
